@@ -7,6 +7,8 @@ const { Role } = require("./role");
 const { BankAccount } = require("./bankAccount");
 const { OTPVerification } = require("./otpVerification");
 const { Invoice } = require("./invoice");
+const { StockTransaction } = require("./stockTransaction");
+const { File } = require("./file");
 
 User.belongsTo(Role, {
   foreignKey: "roleId",
@@ -66,6 +68,18 @@ Nominee.belongsTo(User, {
   as: "user",
 });
 
+Product.hasMany(StockTransaction, {
+  foreignKey: "productId",
+  sourceKey: "id",
+  as: "stockTransactions",
+});
+
+Product.hasMany(File, {
+  foreignKey: "ownerId",
+  sourceKey: "id",
+  as: "files",
+});
+
 module.exports = {
   User,
   Role,
@@ -74,4 +88,7 @@ module.exports = {
   BankAccount,
   Nominee,
   Invoice,
+  Product,
+  StockTransaction,
+  File,
 };

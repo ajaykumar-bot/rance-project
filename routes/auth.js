@@ -3,6 +3,7 @@ const router = express.Router();
 const userController = require("../controllers/userController");
 const productController = require("../controllers/productController");
 const { validateProduct } = require("../middlewares/validateProduct");
+const { upload } = require("../middlewares/multer");
 
 router.get("/profile/:id", userController.profile);
 
@@ -17,6 +18,7 @@ router.post("/update-nominee", userController.updaetNominee);
 router.post("/update-bankac", userController.updateBankAc);
 router.post("/update-password", validateProduct, userController.updatePassword);
 
-router.post("/product", productController.store);
+router.post("/product", validateProduct, upload, productController.store);
+router.post("/update-product/:id", validateProduct, productController.update);
 
 module.exports = router;

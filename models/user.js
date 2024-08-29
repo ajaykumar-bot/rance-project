@@ -1,36 +1,36 @@
 // models/user.js
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config'); // Adjust the path to your Sequelize connection config
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../config"); // Adjust the path to your Sequelize connection config
 
 const User = sequelize.define(
-  'User',
+  "User",
   {
     id: {
       type: DataTypes.BIGINT, // or DataTypes.INTEGER for smaller ranges
       autoIncrement: true,
       primaryKey: true, // Marks this column as the primary key
       allowNull: false, // Ensures the column is not null
-      field: 'id',
+      field: "id",
     },
     googleId: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: 'google_id',
+      field: "google_id",
     },
     googleToken: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: 'google_token',
+      field: "google_token",
     },
     googleRefreshToken: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: 'google_refresh_token',
+      field: "google_refresh_token",
     },
     googleAvatar: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: 'google_avatar',
+      field: "google_avatar",
     },
     parentId: {
       type: DataTypes.BIGINT,
@@ -40,7 +40,7 @@ const User = sequelize.define(
       //     key: 'id',
       //   },
       //   onDelete: 'SET NULL',
-      field: 'parent_id',
+      field: "parent_id",
     },
     roleId: {
       type: DataTypes.BIGINT,
@@ -50,102 +50,102 @@ const User = sequelize.define(
       //     key: 'id',
       //   },
       //   onDelete: 'CASCADE',
-      field: 'role_id',
+      field: "role_id",
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      field: 'name',
+      field: "name",
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      field: 'email',
+      field: "email",
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      field: 'password',
+      field: "password",
     },
     phone: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: 'phone',
+      field: "phone",
     },
     whatsapp: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: 'whatsapp',
+      field: "whatsapp",
     },
     fatherName: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: 'father_name',
+      field: "father_name",
     },
     aadhar: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: 'aadhar',
+      field: "aadhar",
     },
     pan: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: 'pan',
+      field: "pan",
     },
     avatar: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: 'avatar',
+      field: "avatar",
     },
     gender: {
-      type: DataTypes.ENUM('male', 'female', 'other'),
-      defaultValue: 'male',
-      field: 'gender',
+      type: DataTypes.ENUM("male", "female", "other"),
+      defaultValue: "male",
+      field: "gender",
     },
     dob: {
       type: DataTypes.DATEONLY,
       allowNull: true,
-      field: 'dob',
+      field: "dob",
     },
     startingLevel: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      field: 'starting_level',
+      field: "starting_level",
     },
     isActive: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-      field: 'is_active',
+      field: "is_active",
     },
     isBlocked: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-      field: 'is_blocked',
+      field: "is_blocked",
     },
     isDeleted: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-      field: 'is_deleted',
+      field: "is_deleted",
     },
     emailVerifiedAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      field: 'email_verified_at',
+      field: "email_verified_at",
     },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      field: 'created_at',
+      field: "created_at",
     },
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      field: 'updated_at',
+      field: "updated_at",
     },
   },
   {
-    tableName: 'users',
+    tableName: "users",
   }
 );
 
