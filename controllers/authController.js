@@ -142,4 +142,47 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+const logout = async (req, res) => {
+  try {
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Error in Logout API!",
+      error: error.message,
+    });
+  }
+};
+
+const validateToken = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const user = await User.findOne({ where: { email: email } });
+
+    if (user) {
+      await user.reload({
+        include: [
+          { model: Role, as: "role" },
+          { model: Address, as: "addresses" },
+        ],
+      });
+
+      return res.status(200).json({
+        success: true,
+        message: "User Authenticated",
+      });
+    }
+
+    return res.status(403).json({
+      success: true,
+      message: "User Authentication failed",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Error in Validate Token API!",
+      error: error.message,
+    });
+  }
+};
+module.exports = { register, login, logout, validateToken };
